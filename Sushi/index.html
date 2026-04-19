@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sushi Master | Premium Japanese Cuisine</title>
+    <link rel="stylesheet" href="style.css">
+   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+<body>
+    <!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="logo" onclick="showPage('home')">Sushi<span>Master</span></div>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')">Home</a></li>
+    <li><a onclick="showPage('home'); scrollToSection('cat-sec')">Menu</a></li>
+    <li><a onclick="showPage('home'); scrollToSection('about-sec')">About</a></li>
+    <li><a onclick="showPage('home'); scrollToSection('best-sec')">Chef's Special</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="cart-btn" onclick="toggleCart()">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      Cart <span class="cart-count" id="cart-count">0</span>
+    </button>
+    <button class="hamburger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mob-overlay" id="mob-overlay" onclick="toggleNav()"></div>
+<nav class="mobile-nav" id="mobile-nav">
+  <button class="mob-close" onclick="toggleNav()">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <a onclick="toggleNav();showPage('home')">Home</a>
+  <a onclick="toggleNav();showPage('home');setTimeout(()=>scrollTo('cat-sec'),150)">Menu</a>
+  <a onclick="toggleNav();showPage('home');setTimeout(()=>scrollTo('about-sec'),150)">About</a>
+  <a onclick="toggleNav();showPage('home');setTimeout(()=>scrollTo('best-sec'),150)">Chef's Special</a>
+</nav>
+
+<!-- ═══ HOME PAGE ═══ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <p class="hero-eyebrow">Edomae · Tokyo Style · Since 1998</p>
+        <h1 class="hero-title">Taste the<br><em>True Tradition</em></h1>
+        <p class="hero-desc">Premium sushi crafted with seasonal ingredients and centuries-old techniques — sourced fresh from Toyosu Market every morning.</p>
+        <div class="hero-actions">
+         <button class="btn-primary" onclick="scrollToSection('cat-sec')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            Explore the Menu
+          </button>
+          <button class="btn-outline" onclick="scrollTo('about-sec')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Our Story
+          </button>
+        </div>
+      </div>
+      <div class="hero-img-wrap">
+        <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=700&q=85&fit=crop&crop=center" alt="Sushi Platter" class="hero-img">
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="categories-section" id="cat-sec">
+    <div class="cat-inner">
+      <p class="section-eyebrow reveal">Browse by Category</p>
+      <h2 class="section-heading reveal">What are you <em>craving?</em></h2>
+      <div class="cat-grid">
+        <div class="cat-card reveal" onclick="openCategory('nigiri')">
+          <div class="cat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><ellipse cx="12" cy="14" rx="8" ry="5"/><path d="M4 14c0-3 3.5-6 8-6s8 3 8 6"/><path d="M8 8c1 -3 6 -3 7 0"/></svg>
+          </div>
+          <div class="cat-name">Nigiri</div>
+          <div class="cat-count">8 items</div>
+        </div>
+        <div class="cat-card reveal" onclick="openCategory('maki')">
+          <div class="cat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="var(--accent)"/></svg>
+          </div>
+          <div class="cat-name">Maki Rolls</div>
+          <div class="cat-count">10 items</div>
+        </div>
+        <div class="cat-card reveal" onclick="openCategory('sashimi')">
+          <div class="cat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M20 12s-2-6-8-6-8 6-8 6 2 6 8 6 8-6 8-6z"/><circle cx="12" cy="12" r="2.5"/><path d="M3 12h2M19 12h2"/></svg>
+          </div>
+          <div class="cat-name">Sashimi</div>
+          <div class="cat-count">6 items</div>
+        </div>
+        <div class="cat-card reveal" onclick="openCategory('temaki')">
+          <div class="cat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M4 4l7 16 4-7 5-1z"/><path d="M4 4l5 3"/></svg>
+          </div>
+          <div class="cat-name">Temaki</div>
+          <div class="cat-count">5 items</div>
+        </div>
+        <div class="cat-card reveal" onclick="openCategory('omakase')">
+          <div class="cat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="cat-name">Omakase</div>
+          <div class="cat-count">3 sets</div>
+        </div>
+        <div class="cat-card reveal" onclick="openCategory('drinks')">
+          <div class="cat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M8 2h8l1 8a5 5 0 01-10 0L8 2z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
+          </div>
+          <div class="cat-name">Drinks</div>
+          <div class="cat-count">7 items</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about-sec">
+    <div class="about-inner">
+      <div class="about-img-wrap reveal">
+        <img src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=700&q=85&fit=crop&crop=center" alt="Sushi Chef at work" class="about-img">
+      </div>
+      <div class="reveal">
+        <p class="section-eyebrow">Our Heritage</p>
+        <h2 class="section-heading">The Art of <em>Sushi</em></h2>
+        <p class="section-body">Since 1998, we have been sourcing the finest fish from Toyosu Market to bring authentic Tokyo-style Edomae sushi to your table. Every piece is shaped by hand, with rice seasoned by our head chef's own recipe.</p>
+        <p class="section-body">We believe sushi is not just food — it is a meditative craft, a bridge between the sea and the season.</p>
+        <div class="about-stats">
+          <div><div class="stat-num">26</div><div class="stat-label">Years open</div></div>
+          <div><div class="stat-num">3</div><div class="stat-label">Michelin stars</div></div>
+          <div><div class="stat-num">40+</div><div class="stat-label">Menu items</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEST SELLER -->
+  <section class="best-section" id="best-sec">
+    <div class="best-inner">
+      <div class="reveal">
+        <span class="badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--accent)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Chef's Choice
+        </span>
+        <h2 class="section-heading">The <em>Omakase</em> Special</h2>
+        <p class="section-body">A 12-piece journey through our rarest cuts of the day — curated each morning by our head chef based on the freshest market arrivals.</p>
+        <div class="best-price">$85.00</div>
+        <button class="btn-primary" onclick="addToCart({id:'omakase',name:'Omakase Special',price:85,img:'https://images.unsplash.com/photo-1617196034183-421b4040ed20?w=80&q=60&fit=crop'})">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.99-1.61L23 6H6"/></svg>
+          Order Best Seller
+        </button>
+        <div class="pieces-row">
+          <span class="piece-tag">Bluefin Tuna</span>
+          <span class="piece-tag">King Salmon</span>
+          <span class="piece-tag">Sea Urchin</span>
+          <span class="piece-tag">A5 Wagyu</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <img src="https://img.etimg.com/thumb/width-1600,height-900,imgsize-108632,resizemode-75,msid-102634797/news/new-updates/worlds-priciest-sushi-unveiling-the-exquisite-kiwami-omakase-culinary-masterpiece-valued-at-over-2-lakh.jpg" 
+        alt="Omakase Special" class="best-img">
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <div class="logo" style="margin-bottom:8px;font-size:18px;">Sushi<span>Master</span></div>
+      <div>© 2024 SushiMaster. All rights reserved.</div>
+    </div>
+    <div class="footer-links">
+      <a href="#">Menu</a><a href="#">Reservations</a><a href="#">Contact</a><a href="#">Privacy</a>
+    </div>
+    <div class="footer-social">
+      <button class="social-btn" title="Instagram">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+      </button>
+      <button class="social-btn" title="Facebook">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      </button>
+      <button class="social-btn" title="Twitter/X">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+      </button>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══ CATEGORY PAGE ═══ -->
+<div class="page" id="page-category">
+  <div class="cat-page-inner">
+    <button class="back-btn" onclick="showPage('home')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to Menu
+    </button>
+    <div class="cat-page-header">
+      <p class="section-eyebrow" id="cat-eyebrow"></p>
+      <h1 class="cat-page-title" id="cat-title"></h1>
+      <p class="cat-page-desc" id="cat-desc"></p>
+    </div>
+    <div class="products-grid" id="products-grid"></div>
+  </div>
+  <footer style="margin-top:80px;">
+    <div>
+      <div class="logo" style="margin-bottom:8px;font-size:18px;">Sushi<span>Master</span></div>
+      <div>© 2024 SushiMaster.</div>
+    </div>
+    <div class="footer-links"><a href="#">Menu</a><a href="#">Reservations</a><a href="#">Contact</a></div>
+  </footer>
+</div>
+
+<!-- CART OVERLAY + SIDEBAR -->
+<div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+<div class="sidebar" id="cart-sidebar">
+  <div class="sidebar-header">
+    <span class="sidebar-title">Your Cart</span>
+    <button class="close-btn" onclick="toggleCart()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="cart-items-wrap" id="cart-items"></div>
+  <div class="sidebar-footer">
+    <div class="cart-total-row">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-val">$<span id="cart-total">0</span></span>
+    </div>
+    <button class="checkout-btn" onclick="showCheckout()">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
+      Proceed to Checkout
+    </button>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkout-modal">
+  <div class="modal-box">
+    <h2 class="modal-title">Finalize Order</h2>
+    <p class="modal-sub">We'll confirm your order by email within minutes.</p>
+    <div class="field"><input type="text" placeholder="Full Name" id="f-name"></div>
+    <div class="field"><input type="email" placeholder="Email Address" id="f-email"></div>
+    <div class="field"><input type="tel" placeholder="Phone Number" id="f-phone"></div>
+    <div class="modal-actions">
+      <button class="btn-primary" onclick="placeOrder()" style="flex:1;justify-content:center;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Place Order
+      </button>
+      <button class="cancel-btn" onclick="hideCheckout()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <div class="toast-dot"></div>
+  <span id="toast-msg">Added to cart</span>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
