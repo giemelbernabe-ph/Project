@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tracker — Student Assignment Planner</title>
+<link rel="icon" type="image/jpeg" href="pogilang.jpg">
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      Trackr<span class="logo-dot">.</span>
+    </div>
+    <div class="header-right">
+      <div class="stats-pill" id="stats-pill">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <span id="stat-done">0</span> of <span id="stat-total">0</span> done
+      </div>
+      <button class="dark-toggle" id="dark-btn" title="Toggle dark mode">
+        <svg id="dark-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- PROGRESS -->
+  <div class="progress-bar-wrap" id="progress-wrap">
+    <div class="progress-info">
+      <div class="progress-label">
+        <span>Completion progress</span>
+        <span id="progress-txt">0 completed</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+    <div class="progress-pct" id="progress-pct">0%</div>
+  </div>
+
+  <!-- ADD FORM (hidden by default, shown by button) -->
+  <div id="form-wrap" style="display:none;">
+    <div class="form-card">
+      <div class="form-title">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        New Assignment
+      </div>
+      <div class="form-grid">
+        <div class="field">
+          <label>Subject</label>
+          <input type="text" id="inp-subject" placeholder="e.g. Mathematics" maxlength="40">
+        </div>
+        <div class="field">
+          <label>Assignment Title</label>
+          <input type="text" id="inp-title" placeholder="e.g. Problem Set 3" maxlength="80">
+        </div>
+        <div class="field">
+          <label>Due Date</label>
+          <input type="date" id="inp-date">
+        </div>
+      </div>
+      <div class="form-footer">
+        <button class="btn btn-ghost" onclick="toggleForm()">Cancel</button>
+        <button class="btn btn-primary" onclick="addAssignment()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Save Assignment
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <div class="filter-group">
+      <button class="filter-btn active" data-filter="all" onclick="setFilter('all',this)">All</button>
+      <button class="filter-btn" data-filter="pending" onclick="setFilter('pending',this)">Pending</button>
+      <button class="filter-btn" data-filter="done" onclick="setFilter('done',this)">Done</button>
+    </div>
+    <button class="sort-btn" id="sort-btn" onclick="toggleSort()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="14" y2="12"/><line x1="4" y1="18" x2="8" y2="18"/></svg>
+      Sort by deadline
+    </button>
+    <button class="add-btn-top" onclick="toggleForm()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      Add Assignment
+    </button>
+  </div>
+
+  <!-- ASSIGNMENTS LIST -->
+  <div id="list-root"></div>
+
+</div>
+
+<!-- TOAST CONTAINER -->
+<div class="toast-wrap" id="toast-wrap"></div>
+
+<!-- DELETE CONFIRM MODAL -->
+<div id="modal" style="display:none;"></div>
+
+<!-- FOOTER -->
+<footer class="app-footer">
+  Created by <span>Giemel Bernabe</span>
+</footer>
+</body>
+</html>
